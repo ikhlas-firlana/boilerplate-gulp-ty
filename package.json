@@ -1,0 +1,32 @@
+{
+  "name": "boilerplate-gulp-ty",
+  "version": "0.0.1",
+  "description": "boilerplate typescript with gulp",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node dist/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ikhlas-firlana/boilerplate-gulp-ty.git"
+  },
+  "keywords": [
+    "typescript",
+    "gulp"
+  ],
+  "author": "ikhlas firlana <ifirlana@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ikhlas-firlana/boilerplate-gulp-ty/issues"
+  },
+  "homepage": "https://github.com/ikhlas-firlana/boilerplate-gulp-ty#readme",
+  "devDependencies": {
+    "browserify": "^16.2.2",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^4.0.2",
+    "tsify": "^4.0.0",
+    "typescript": "^2.8.3",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}

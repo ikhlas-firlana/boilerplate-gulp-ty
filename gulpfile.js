@@ -11,34 +11,35 @@ var tsify = require("tsify");
 var watchify = require("watchify");
 var gutil = require("gulp-util");
 //
-var watchedBrowserify = watchify(browserify({
-    basedir: '.',
-    debug: true,
-    entries: ['src/main.ts'],
-    cache: {},
-    packageCache: {}
-}).plugin(tsify));
-function bundle() {
-    return watchedBrowserify
-        .bundle()
-        .pipe(source('bundle.js'))
-        .pipe(gulp.dest("dist"));
-}
-
+// var watchedBrowserify = watchify(browserify({
+//     basedir: '.',
+//     debug: true,
+//     entries: ['src/main.ts'],
+//     cache: {},
+//     packageCache: {}
+// }).plugin(tsify)).on("update", function () {
+//     console.log("oke");
+// });
+//
+gulp.task("build", function () {
+    return tsProject.src()
+        .pipe(tsProject())
+        .js.pipe(gulp.dest("dist"));
+});
 //
 gulp.task("clean-dist", function () {
     return gulp.src('dist/*', {read: false})
         .pipe(clean());
 });
 //
-var paths = {
-    pages: ['src/*.html']
-};
-//
-gulp.task("copy-html", function () {
-    return gulp.src(paths.pages)
-        .pipe(gulp.dest("dist"));
-});
+// var paths = {
+//     pages: ['src/*.html']
+// };
+// //
+// gulp.task("copy-html", function () {
+//     return gulp.src(paths.pages)
+//         .pipe(gulp.dest("dist"));
+// });
 // //
 // gulp.task("default", ["clean-dist", "copy-html"], function () {
 //     return browserify({
@@ -55,6 +56,5 @@ gulp.task("copy-html", function () {
 // });
 // //
 //
-gulp.task("default", ["clean-dist", "copy-html"], bundle);
-watchedBrowserify.on("update", bundle);
-watchedBrowserify.on("log", gutil.log);
+
+gulp.task("default", ["build", "clean-dist"]);
